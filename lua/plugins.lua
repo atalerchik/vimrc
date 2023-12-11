@@ -14,7 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 local lazy = require('lazy')
 
 lazy.setup({
-	{ 'nvim-telescope/telescope.nvim', tag = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' },
+	{
+		'nvim-telescope/telescope.nvim', tag = '0.1.4', dependencies = { 'nvim-lua/plenary.nvim' },
 		config = function() require('plugins.telescope') end,
 	},
 	{
@@ -23,9 +24,8 @@ lazy.setup({
 		config = function() require('plugins.lsp') end,
 	},
 	{
-		'nvim-treesitter/nvim-treesitter',
-		event = 'BufWinEnter', -- Load when entering a window with a buffer
-		run = ':TSUpdate',
+		"nvim-treesitter/nvim-treesitter",
+		build = ":TSUpdate",
 		config = function() require('plugins.treesittier') end,
 	},
 	"nvim-treesitter/nvim-treesitter-textobjects",
@@ -38,8 +38,8 @@ lazy.setup({
 
 	-- LSP and autocompletion
 	{
-		'williamboman/mason.nvim', run = ':MasonUpdate',
-		config = function() require('plugins.masson') end
+		"williamboman/mason.nvim",
+		config = function() require('plugins.masson') end,
 	},
 	'williamboman/mason-lspconfig.nvim',
 	'hrsh7th/nvim-cmp',
@@ -53,7 +53,7 @@ lazy.setup({
 		cmd = 'G', -- Load when the 'G' command is used
 	},
 	{ 'theprimeagen/harpoon', config = function() require('plugins.harpoon') end },
-	{ 
+	{
 		'ThePrimeagen/git-worktree.nvim',
 		config = function() require('plugins.git-worktree') end 
 	},
@@ -62,37 +62,49 @@ lazy.setup({
 
 	-- Code formatting and databases
 	{
-		'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production',
+		'prettier/vim-prettier',
+		build = 'yarn install --frozen-lockfile --production',
 		config = function() require('plugins.prettier') end
 	},
 
 
 	-- Obsidian
 	{
-		"epwalsh/obsidian.nvim",
-		version = "*",  
-		lazy = true,
-		event = {
-			"BufReadPre ~/valuts/**.md",
-			"BufNewFile ~/valuts/**.md",
-		},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		config = function() require('plugins.obsidian-nvim') end,
-	},
+    "epwalsh/obsidian.nvim",
+    version = "*",  -- Use the latest release
+    dependencies = {
+      "nvim-lua/plenary.nvim",  -- Required dependency
+      -- Add any optional dependencies if needed
+    },
+	config = function ()
+		require('plugins.obsidian-nvim')
+	end,
+  },
 
 	-- Visual enhancements and themes
 	'xiyaowong/transparent.nvim',
 	'ellisonleao/gruvbox.nvim',
 	'folke/zen-mode.nvim',
 
-	-- Tree view
 	{
-		'nvim-tree/nvim-tree.lua',
-		requires = {
-			'nvim-tree/nvim-web-devicons', -- optional
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
 		},
-		config = function() require('plugins.nvim-tree') end,
-	},
+		config = function()
+			require("nvim-tree").setup {}
+		end,
+  },
+  {
+    'glacambre/firenvim',
+
+    -- Lazy load firenvim
+    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
+    lazy = not vim.g.started_by_firenvim,
+    build = function()
+        vim.fn["firenvim#install"](0)
+    end
+  },
 });

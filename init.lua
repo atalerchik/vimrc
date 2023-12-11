@@ -1,11 +1,11 @@
 -- Load basic settings
-require('lua.settings')
+require('settings')
 
 -- Load key mappings
-require('lua.keymappings')
+require('keymappings')
 
 -- Load plugins
-require('lua.plugins')
+require('plugins')
 
 -- Setup themes
 require('themes.init')
