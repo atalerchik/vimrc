@@ -58,8 +58,6 @@ lazy.setup({
 		config = function() require('plugins.git-worktree') end 
 	},
 
-	'lewis6991/gitsigns.nvim',
-
 	-- Code formatting and databases
 	{
 		'prettier/vim-prettier',
@@ -70,20 +68,26 @@ lazy.setup({
 
 	-- Obsidian
 	{
-    "epwalsh/obsidian.nvim",
-    version = "*",  -- Use the latest release
-    dependencies = {
-      "nvim-lua/plenary.nvim",  -- Required dependency
-      -- Add any optional dependencies if needed
-    },
-	config = function ()
-		require('plugins.obsidian-nvim')
-	end,
-  },
+		"epwalsh/obsidian.nvim",
+		version = "*",  -- Use the latest release
+		dependencies = {
+			"nvim-lua/plenary.nvim",  -- Required dependency
+			-- Add any optional dependencies if needed
+		},
+		config = function ()
+			require('plugins.obsidian-nvim')
+		end,
+	},
 
 	-- Visual enhancements and themes
 	'xiyaowong/transparent.nvim',
 	'ellisonleao/gruvbox.nvim',
+	{
+		'lewis6991/gitsigns.nvim',
+		config = function()
+			require("gitsigns").setup {}
+		end,
+	},
 	'folke/zen-mode.nvim',
 
 	{
@@ -96,15 +100,6 @@ lazy.setup({
 		config = function()
 			require("nvim-tree").setup {}
 		end,
-  },
-  {
-    'glacambre/firenvim',
-
-    -- Lazy load firenvim
-    -- Explanation: https://github.com/folke/lazy.nvim/discussions/463#discussioncomment-4819297
-    lazy = not vim.g.started_by_firenvim,
-    build = function()
-        vim.fn["firenvim#install"](0)
-    end
-  },
+	},
 });
+
