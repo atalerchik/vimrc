@@ -5,7 +5,7 @@ return {
 	config = function()
 		require'nvim-treesitter.configs'.setup {
 			-- A list of parser names, or "all" (the five listed parsers should always be installed)
-			ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "javascript", "typescript", "json", "yaml", "markdown","markdown_inline"},
+			ensure_installed = {"lua", "vim", "vimdoc", "query", "javascript", "typescript", "json", "yaml", "markdown","markdown_inline", "rust", "toml", "regex", "html", "css", "graphql"},
 			ignore_install = { "" }, -- List of parsers to ignore installing
 
 			-- Install parsers synchronously (only applied to `ensure_installed`)
@@ -15,8 +15,10 @@ return {
 				enable = true,
 				additional_vim_regex_highlighting = { "markdown" },
 			},
+			indent = { enable = true },
+			autotag = { enable = true },
 		}
 	end,
 	event = "BufRead",  -- Load nvim-treesitter on buffer read
-	ft = { "c", "lua", "vim", "vimdoc", "query", "javascript", "typescript", "json", "yaml", "markdown", "markdown_inline" }, -- File types
+	ft = { "lua", "vim", "vimdoc", "query", "javascript", "typescript", "json", "yaml", "markdown", "markdown_inline", "toml", "rust" }, -- File types
 }
