@@ -17,4 +17,6 @@ return {
 			},
 		}
 	end,
+	event = "BufRead",  -- Load nvim-treesitter on buffer read
+	ft = { "c", "lua", "vim", "vimdoc", "query", "javascript", "typescript", "json", "yaml", "markdown", "markdown_inline" }, -- File types
 }
