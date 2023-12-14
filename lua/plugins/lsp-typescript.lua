@@ -3,8 +3,8 @@ return {
   dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
   config = function()
     local keymap = vim.keymap
-    keymap.set('n', '<leader>m', '<cmd>TSToolsOrganizeImports<cr>')
-    keymap.set('n', '<leader>a', '<cmd>TSToolsAddMissingImports<cr>')
+    keymap.set('n', '<leader>oi', '<cmd>TSToolsOrganizeImports<cr>')
+    keymap.set('n', '<leader>ai', '<cmd>TSToolsAddMissingImports<cr>')
 
     local api = require 'typescript-tools.api'
     require('typescript-tools').setup {
