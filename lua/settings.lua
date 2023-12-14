@@ -7,7 +7,7 @@ vim.o.mouse = 'a'
 vim.o.encoding = 'utf-8'
 
 -- Enable line numbers
-vim.opt.relativenumber = true
+opt.relativenumber = true
 vim.wo.number = true
 
 -- Disable swap file
@@ -46,11 +46,9 @@ opt.wrap = false
 -- Search settings
 opt.ignorecase = true
 opt.smartcase = true
-opt.hlsearch = false
-opt.incsearch = false
+opt.hlsearch = true
+opt.incsearch = true
 
--- Apperance
-opt.termguicolors = true
 
 -- Vim markdown (vim-markdown-set-header-folding-level)
 vim.g.vim_markdown_folding_level = 6
@@ -61,3 +59,7 @@ opt.expandtab = false;
 -- disable netrw at the very start of init.lua
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+
+-- Apperance
+opt.cursorline = true
+opt.termguicolors = true

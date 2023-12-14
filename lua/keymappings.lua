@@ -33,12 +33,7 @@ keymap.set("n", "<leader>Y", [["+Y]])
 -- safe delete
 keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
-keymap.set("n", "<leader>,", ":noh<CR>")
-
-
 keymap.set('n', '<space>e', vim.diagnostic.open_float)
-keymap.set('n', '[d', vim.diagnostic.goto_prev)
-keymap.set('n', ']d', vim.diagnostic.goto_next)
 keymap.set('n', '<space>q', vim.diagnostic.setloclist)
 
 -- Map 'jk' to <esc> in insert mode
@@ -61,3 +56,6 @@ keymap.set('v', '<leader>wf', 'Sfunction () {<CR><C-r>"<CR>}<ESC>', { noremap = 
 keymap.set('n', '<leader>zz', ':ZenMode<cr>', { noremap = true, silent = true })
 
 keymap.set('n', '<leader>ex', ':NvimTreeOpen<cr>', { noremap = true, silent = true })
+
+-- Clear highlights
+keymap.set('n', '<leader>nh', ':nohl<CR>', { desc = 'Clear search highlights' })
