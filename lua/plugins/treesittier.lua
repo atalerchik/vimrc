@@ -1,24 +1,62 @@
 return {
-	"nvim-treesitter/nvim-treesitter",
-	dependencies = {'nvim-treesitter/nvim-treesitter-textobjects'},
-	build = ":TSUpdate",
-	config = function()
-		require'nvim-treesitter.configs'.setup {
-			-- A list of parser names, or "all" (the five listed parsers should always be installed)
-			ensure_installed = {"lua", "vim", "vimdoc", "query", "javascript", "typescript", "json", "yaml", "markdown","markdown_inline", "rust", "toml", "regex", "html", "css", "graphql"},
-			ignore_install = { "" }, -- List of parsers to ignore installing
+  {
+    'nvim-treesitter/nvim-treesitter',
+    event = { 'BufReadPre', 'BufNewFile' },
+    build = ':TSUpdate',
+    dependencies = {
+      'windwp/nvim-ts-autotag',
+      'axelvc/template-string.nvim',
+			'nvim-treesitter/nvim-treesitter-textobjects'
+    },
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        ensure_installed = {
+          'tsx',
+          'lua',
+          'vim',
+          'typescript',
+          'javascript',
+          'html',
+          'css',
+          'json',
+          'graphql',
+          'regex',
+          'rust',
+          'prisma',
+          'markdown',
+          'markdown_inline',
+        },
 
-			-- Install parsers synchronously (only applied to `ensure_installed`)
-			sync_install = false,
+        sync_install = false,
 
-			highlight = {
-				enable = true,
-				additional_vim_regex_highlighting = { "markdown" },
-			},
-			indent = { enable = true },
-			autotag = { enable = true },
-		}
-	end,
-	event = "BufRead",  -- Load nvim-treesitter on buffer read
-	ft = { "lua", "vim", "vimdoc", "query", "javascript", "typescript", "json", "yaml", "markdown", "markdown_inline", "toml", "rust" }, -- File types
+        auto_install = true,
+
+        highlight = {
+          enable = true,
+
+          additional_vim_regex_highlighting = false,
+        },
+        autotag = {
+          enable = true,
+        },
+        incremental_selection = {
+          enable = true,
+          keymaps = {
+            init_selection = '<enter>',
+            node_incremental = '<enter>',
+            scope_incremental = false,
+            node_decremental = '<bs>',
+          },
+        },
+      }
+
+      require('template-string').setup {}
+
+      -- fold
+      local opt = vim.opt
+      opt.foldmethod = 'expr'
+      opt.foldexpr = 'nvim_treesitter#foldexpr()'
+      opt.foldenable = false
+    end,
+  },
 }

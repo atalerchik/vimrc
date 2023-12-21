@@ -15,13 +15,13 @@ return {
 				enable = false,
 			},
 			 code_action_prompt = { enable = false },
-			 lightbulb = { enable = false}
+			 lightbulb = { enable = false, virtual_text = true }
 		}
 
 		keymap.set('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<cr>')
 		keymap.set('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<cr>')
 		keymap.set('n', '<leader>o', '<cmd>Lspsaga outline<cr>')
-		keymap.set('n', '<leader>cl', '<cmd>Lspsaga incoming_calls<cr>')
+		keymap.set('n', '<leader>ic', '<cmd>Lspsaga incoming_calls<cr>')
 
 		local builtin = require 'telescope.builtin'
 
