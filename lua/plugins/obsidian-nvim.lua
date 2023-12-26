@@ -12,7 +12,7 @@ return {
 				folder = "home/daily",
 				date_format = "%Y-%m-%d",
 				alias_format = "%B %-d, %Y",
-				template = nil
+				template = 'daily.md'
 			},
 
 			completion = {
@@ -59,7 +59,17 @@ return {
 				subdir = "meta/templates",
 				date_format = "%Y-%m-%d",
 				time_format = "%H:%M",
-				substitutions = {}
+				substitutions = {
+					yesterday = function()
+						return os.date("%Y-%m-%d", os.time() - 86400)
+					end,
+					today = function()
+						return os.date("%Y-%m-%d", os.time())
+					end,
+					tomorow = function()
+						return os.date("%Y-%m-%d", os.time() + 86400)
+					end
+				}
 			},
 
 			backlinks = {
