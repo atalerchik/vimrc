@@ -10,9 +10,6 @@ keymap.set('n', '<leader>;', '<cmd>cprev<CR>zz')
 keymap.set('n', '<leader>k', '<cmd>lnext<CR>zz')
 keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
 
--- Open NvimTree explorer
-keymap.set("n", "<leader>pv", '<cmd>NvimTreeOpen<CR>')
-
 -- move lines
 keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -54,8 +51,6 @@ keymap.set('v', '<leader>cl', 'yOconsole.log("", <C-r>"");<ESC>', { noremap = tr
 keymap.set('v', '<leader>wf', 'Sfunction () {<CR><C-r>"<CR>}<ESC>', { noremap = true, silent = true })
 
 keymap.set('n', '<leader>zz', ':ZenMode<cr>', { noremap = true, silent = true })
-
-keymap.set('n', '<leader>ex', ':NvimTreeOpen<cr>', { noremap = true, silent = true })
 
 -- Clear highlights
 keymap.set('n', '<leader>nh', ':nohl<CR>', { desc = 'Clear search highlights' })
