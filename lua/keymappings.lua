@@ -59,3 +59,7 @@ keymap.set('n', '<leader>ex', ':NvimTreeOpen<cr>', { noremap = true, silent = tr
 
 -- Clear highlights
 keymap.set('n', '<leader>nh', ':nohl<CR>', { desc = 'Clear search highlights' })
+
+-- Create ADR
+keymap.set('n', '<leader>adr', ':e ~/projects/atlas/adr-documentation/ADR-<C-R>=strftime("%Y%m%d%H%M%S")<CR>.md<CR>', { noremap = true, silent = true})
+
