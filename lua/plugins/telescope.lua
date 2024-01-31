@@ -1,6 +1,6 @@
 return {
-		{
-		"telescope.nvim",
+	{
+		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
@@ -25,6 +25,9 @@ return {
 					builtin.find_files({
 						no_ignore = false,
 						hidden = true,
+						file_ignore_patterns = { "node_modules", ".git", '__pycache__/'  },
+						prompt_title = "File Browser",
+						max_file_size = 1000000,
 					})
 				end,
 				desc = "Lists files in your current working directory, respects .gitignore",
